@@ -51,7 +51,7 @@ export const RowSelection = () => {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {firstPageRows.map(row => {
+          {rows.map(row => {
             prepareRow(row)
             return (
               <tr {...row.getRowProps()}>

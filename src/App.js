@@ -11,7 +11,7 @@ import {RowSelection} from "./component/RowSelection";
    return (
      <div className="App">
        <h1>InvoiceSmash Subscription Name</h1>
-      <RowSelection></RowSelection>
+     <PaginationTable></PaginationTable>
      </div>
    );
  }

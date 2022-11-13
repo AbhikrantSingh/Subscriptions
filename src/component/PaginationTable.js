@@ -1,10 +1,16 @@
 import React,{useMemo} from 'react'
 
-import {useTable, useSortBy,usePagination,useFilters, useGlobalFilter } from 'react-table'
+import {useTable,
+   useSortBy,usePagination,
+   useFilters, 
+   useGlobalFilter,
+   useRowSelect } from 'react-table'
 import MOCK_DATA from './MOCK_DATA.json'
 import {COLUMNS} from './columns'
 import './style.css'
 import { GlobalFilter } from './GlobalFilter'
+import { Checkbox } from './Checkbox'
+
 import { ColumnFilter } from './ColumnFilter'
 export  const PaginationTable=()=> {
     
@@ -34,7 +40,8 @@ export  const PaginationTable=()=> {
         state,
         setGlobalFilter,
         setPageSize,
-        prepareRow
+        prepareRow,
+        selectedFlatRows
       } = useTable({
         columns,
         data,
@@ -42,7 +49,21 @@ export  const PaginationTable=()=> {
       },
       useFilters,
       useGlobalFilter,
-      useSortBy,usePagination)
+      useSortBy,usePagination,
+      useRowSelect,
+      hooks => {
+        hooks.visibleColumns.push(columns => [
+          {
+            is_Enabled: 'selection',
+            Header: ({ getToggleAllRowsSelectedProps }) => (
+              <Checkbox {...getToggleAllRowsSelectedProps()} />
+            ),
+            Cell: ({ row }) => <Checkbox {...row.getToggleRowSelectedProps()} />
+          },
+          ...columns
+        ])
+      }
+  )
 
 
       const {pageIndex,pageSize,globalFilter} = state
@@ -85,6 +106,18 @@ export  const PaginationTable=()=> {
         </tbody>
         
       </table>
+      <pre>
+        <code>
+          {JSON.stringify(
+            {
+              selectedFlatRows: selectedFlatRows.map(row => row.original)
+            },
+            null,
+            2
+          )}
+        </code>
+      </pre>
+      
       <div>
         <span>
           Page{' '}
