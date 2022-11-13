@@ -50,7 +50,7 @@ export  const PaginationTable=()=> {
     return (
     <>
     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-     <table {...getTableProps()}>
+     <table {...getTableProps()}>     
         <thead>
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
