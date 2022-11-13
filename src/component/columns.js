@@ -1,5 +1,8 @@
 import {format} from 'date-fns'
 import { ColumnFilter } from './ColumnFilter'
+
+
+
 export const COLUMNS =  
 [
 
@@ -8,8 +11,9 @@ export const COLUMNS =
         Footer:'Status',
         accessor:'is_Enabled', 
         Cell: ({ cell }) => (
-            <input type="button" value={cell.row.values.is_Enabled==true?"TurnOn":"TurnOff"} >
-              
+            <input type="button" value={cell.row.values.is_Enabled==true?"TurnOn":"TurnOff"} 
+           
+            >              
             </input>
         ),
         Filter:ColumnFilter,
