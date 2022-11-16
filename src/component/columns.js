@@ -26,9 +26,10 @@ export const COLUMNS =
     {
         Header:'SubscriptionName',
         Footer:'SubscriptionName',
-        accessor:'subscriptionName',
+        accessor:'subscription_Name',
         Filter:ColumnFilter
-    },
+    }
+    /*,
     {
         Header:'utcFirstBackOfftimeStampString',
         Footer:'utcFirstBackOfftimeStampString',
@@ -37,4 +38,5 @@ export const COLUMNS =
         disableFilters: true
   
     }
+*/
 ]

@@ -1,4 +1,4 @@
-import React,{useMemo} from 'react'
+import React,{useMemo,useState,useEffect} from 'react'
 
 import {useTable,
    useSortBy,usePagination,
@@ -10,12 +10,24 @@ import {COLUMNS} from './columns'
 import './style.css'
 import { GlobalFilter } from './GlobalFilter'
 import { Checkbox } from './Checkbox'
+import Axios from 'axios'
 
 import { ColumnFilter } from './ColumnFilter'
 export  const PaginationTable=()=> {
     
+  const [subscription,setSubscription]= useState([])
+
+  useEffect(()=>{
+      Axios
+      .get('https://localhost:5001/api/subscription')
+      .then(res =>
+          {
+          console.log(res.data);
+          setSubscription(res.data)
+        });
+  },[])
     const columns =useMemo(() => COLUMNS,[]) //use for rendering the table only 1st tym.
-    const data = useMemo(()=> MOCK_DATA,[])
+    const data = useMemo(()=> subscription,[])
   
     const defaultColumn = React.useMemo(
       () => ({

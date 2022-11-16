@@ -14,7 +14,7 @@ import {DataFetching} from './component/DataFetching';
    return (
      <div className="App">
        <h1>InvoiceSmash Subscription Name</h1>
-    <ClickingButton></ClickingButton>
+    <PaginationTable></PaginationTable>
      </div>
    );
  }
